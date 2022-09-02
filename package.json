@@ -3,7 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "local": "nodemon src/server.js"
+    "local": "nodemon src/server.js",
+    "local-pm2": "pm2 start ecosystem.config.js --only app-local",
+    "dev": "pm2 start ecosystem.config.js --only app-dev",
+    "test": "pm2 start ecosystem.config.js --only app-test",
+    "prod": "pm2 start ecosystem.config.js --only app-prod"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",

@@ -93,8 +93,10 @@ function setKeepAlive(app) {
     app.set('isDisableKeepAlive', false);
     app.use((req, res, next) => {
         // server.js 에서 프로그램 종료 요청시 isDisableKeepAlive 값이 true 로 할당됨
-        if (app.get('isDisableKeepAlive'))
+        if (app.get('isDisableKeepAlive')) {
+            // 응답 헤더에 Connection:close 설정해 클라이언트 요청을 종료
             res.set('Connection', 'close');
+        } 
         next();
     });
 }
